@@ -1,0 +1,19 @@
+@import url(./normalize.css),
+url(./stylesheet.css),
+url(./icomoon.css),
+'variables',
+'components',
+'sections';
+body {
+    font-family: 'Raleway', 'sans-serif';
+    color: $text-color;
+    background: $bg-color;
+    display: flex;
+    flex-direction: column;
+}
+
+h2,
+h3 {
+    margin: 0;
+    padding: 0;
+}

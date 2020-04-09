@@ -1,0 +1,296 @@
+.slider {
+    position: relative;
+    &__prev {
+        position: absolute;
+        content: '\e901';
+        font-family: 'icomoon';
+        font-size: 30px;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $title-color;
+        transition: font-size 0.3s ease;
+        & span::before {
+            content: '\e901';
+        }
+        &:hover {
+            font-size: 50px;
+        }
+    }
+    &__next {
+        color: $title-color;
+        position: absolute;
+        font-family: 'icomoon';
+        font-size: 30px;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: font-size 0.3s ease;
+        & span::before {
+            content: '\e905';
+        }
+        &:hover {
+            font-size: 50px;
+        }
+    }
+    &__item {
+        display: flex;
+    }
+    &__left-inner {
+        width: 50%;
+        padding: 90px;
+        border-right: 1px solid $title-color;
+    }
+    &__right-inner {
+        width: 50%;
+        padding: 90px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__photo {
+        width: 100%;
+        height: 100%;
+        border: 1px solid $title-color;
+        position: relative;
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        &-bracket {
+            content: '';
+            position: absolute;
+            height: 1px;
+            width: 100px;
+            background: $title-color;
+            animation: anim-img-brackets $duration-animation infinite alternate;
+            &::before {
+                content: '';
+                position: absolute;
+                width: 1px;
+                height: 100px;
+                background: $title-color;
+                animation: anim-img-brackets-before $duration-animation infinite alternate;
+            }
+            &:nth-child(1) {
+                left: -15px;
+                top: -15px;
+                &::before {
+                    left: 0;
+                    top: 0;
+                }
+            }
+            &:nth-child(2) {
+                right: -15px;
+                top: -15px;
+                animation-delay: $duration-animation*1/3;
+                &::before {
+                    right: 0;
+                    top: 0;
+                    animation-delay: $duration-animation*1/3;
+                }
+            }
+            &:nth-child(3) {
+                left: -15px;
+                bottom: -15px;
+                animation-delay: $duration-animation;
+                &::before {
+                    left: 0;
+                    bottom: 0;
+                    animation-delay: $duration-animation;
+                }
+            }
+            &:nth-child(4) {
+                right: -15px;
+                bottom: -15px;
+                animation-delay: $duration-animation*2/3;
+                &::before {
+                    animation-delay: $duration-animation*2/3;
+                    right: 0;
+                    bottom: 0;
+                }
+            }
+        }
+    }
+    &__name {
+        font-size: 36px;
+        line-height: 36px;
+        margin-bottom: 60px;
+    }
+    &__position {
+        font-size: 24px;
+        line-height: 24px;
+        margin-bottom: 26px;
+        color: $subtitle-color;
+    }
+    &__socials {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        height: 30px;
+        width: 150px;
+        & span {
+            display: block;
+            content: '';
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid $subtitle-color;
+            font-family: 'icomoon';
+            color: $subtitle-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            opacity: 0.5;
+            transform: scale(1);
+            transition: all 0.3s ease;
+            &:hover {
+                opacity: 1;
+                cursor: pointer;
+                transform: scale(1.2);
+            }
+            &::before {
+                position: relative;
+                top: 1px;
+            }
+        }
+        & a:nth-child(1) span::before {
+            content: '\e902';
+        }
+        & a:nth-child(2) span::before {
+            content: '\e903';
+        }
+        & a:nth-child(3) span::before {
+            content: '\e900';
+        }
+        & a:nth-child(4) span::before {
+            content: '\e904';
+        }
+    }
+    &__text {
+        margin-bottom: 20px;
+    }
+    &__doted-line {
+        position: relative;
+        height: 3px;
+        width: 20px;
+        background: $title-color;
+        margin-bottom: 20px;
+        animation: anim-dotted-line 0.5s infinite alternate;
+        &::before,
+        &::after {
+            position: absolute;
+            content: '';
+            top: 50%;
+            transform: translateY(-50%);
+            height: 3px;
+            width: 10px;
+            background: $title-color;
+            animation: anim-dotted-line 0.5s infinite alternate;
+            animation-delay: 0.5s;
+        }
+        &::before {
+            left: -15px;
+        }
+        &::after {
+            right: -15px;
+        }
+    }
+    &__profile-link {
+        border: 1px solid $title-color;
+        padding: 5px;
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer;
+        transform: scale(1);
+        transition: transform 0.3s ease;
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+    &__dots {
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: space-between;
+        width: 50px;
+        & span {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid $title-color;
+            background: $title-color;
+            &.active {
+                background: transparent;
+            }
+        }
+    }
+}
+
+@keyframes anim-dotted-line {
+    0% {
+        width: 15px;
+    }
+    100% {
+        width: 5px;
+    }
+}
+
+@keyframes anim-img-brackets {
+    0% {
+        width: 100px;
+    }
+    80% {
+        width: 100px;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes anim-img-brackets-before {
+    0% {
+        height: 100px;
+    }
+    80% {
+        height: 100px;
+    }
+    100% {
+        height: 0;
+    }
+}
+.title {
+    font-size: 60px;
+    line-height: 70px;
+    font-weight: 700;
+    color: $title-color;
+    position: relative;
+    padding: 0 0 48px 0;
+    &::before,
+    &::after {
+        position: absolute;
+        content: '';
+        width: 65%;
+        height: 1px;
+        background: $title-color;
+        bottom: 8px;
+    }
+    &::before {
+        left: -20%;
+    }
+    &::after {
+        right: -20%;
+    }
+    &__underline {
+        content: url(../img/header-underline-icon.png);
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
